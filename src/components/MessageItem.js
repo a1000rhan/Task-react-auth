@@ -1,7 +1,18 @@
 import React, { useMemo } from "react";
 
-export default function MessageItem(props) {
-  const time = useMemo((date) => (date = Date()), []);
+import { observer } from "mobx-react";
+import authStore from "../store/authStore";
+import moment from "moment";
+
+function MessageItem(props) {
+  const time = useMemo(
+    (date) => (date = moment().format("MM Do YYYY, hh:mm")),
+    []
+  );
+  const username = useMemo(
+    (data) => (data = authStore.user ? authStore.user.username : ""),
+    []
+  );
   return (
     // IMPORTANT NOTE FOR LINE 8
     // TO SHOW THE MSG ON THE LEFT USE THIS CLASSNAME "chat__item other"
@@ -13,7 +24,7 @@ export default function MessageItem(props) {
           <span>{time}</span>
         </div>
         <div className="chat__meta">
-          <span>By: user</span>
+          <span>By: {username} </span>
         </div>
       </div>
       <div className="avatar">
@@ -24,3 +35,4 @@ export default function MessageItem(props) {
     </div>
   );
 }
+export default observer(MessageItem);
