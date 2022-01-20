@@ -2,7 +2,7 @@ import { Button } from "react-bootstrap";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import UpdateRoomModal from "./UpdateRoomModal";
-import roomStore from "../roomStore";
+import roomStore from "../store/roomStore";
 
 function ChatRoomitem(props) {
   const room = props.room;

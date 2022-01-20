@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import MessageItem from "./MessageItem";
-import roomStore from "../roomStore";
+import roomStore from "../store/roomStore";
 import { observer } from "mobx-react";
 
 function ChatRoom() {
@@ -20,6 +20,8 @@ function ChatRoom() {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
+    roomStore.createNewMessage(msg, room);
+    setMsg({ msg: "" });
   };
 
   return (

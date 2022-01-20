@@ -1,6 +1,6 @@
 import { Modal, Button, InputGroup, Form } from "react-bootstrap";
 import React, { useState } from "react";
-import roomStore from "../roomStore";
+import roomStore from "../store/roomStore";
 
 export default function CreateRoomModal({ isOpen, closeModal }) {
   const [room, setRoom] = useState({
